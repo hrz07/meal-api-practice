@@ -1,5 +1,7 @@
 const searchBtn = () => {
-  fetch("https://www.themealdb.com/api/json/v1/1/search.php?s=fish")
+  const input = document.getElementById("input");
+  const inputVal = input.value;
+  fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${inputVal}`)
     .then((res) => res.json())
     .then((data) => showMeals(data.meals));
 };
@@ -7,9 +9,9 @@ const searchBtn = () => {
 const showMeals = (data) => {
   const contentBox = document.getElementById("content-box");
   for (const element of data) {
-    console.log(element);
+    // console.log(element);
     const div = document.createElement("div");
-    div.classList.add('mt-4')
+    div.classList.add("mt-4");
     div.innerHTML = `
         <div class="card" style="width: 18rem;">
         <img src="${element.strMealThumb}" class="card-img-top" alt="...">
